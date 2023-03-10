@@ -99,6 +99,108 @@ function App() {
       // variaent 적용
       <Box variants={myVars} initial="start" animation="end" />
       // myVars의 start는 initial에 end는 animation에 기술한다.
+        <Circle />
+        <Circle />
+        <Circle />
+        <Circle />
+      </Box>
+    </Wrapper>
+  );
+}
+```
+
+`부모태그가 variants를 갖고 있으면 motion은 자동으로 자식들에게도 variants를 부여한다.`
+
+- 즉, 위의 <Box variants={myVars} initial="start" animation="end" />에서 variants, initial, animation이 자식인 <Circle />에도 부여된다.
+  - 자식인 Circle에서도 variants를 사용하기 위해선 부모의 이름과 동일한 이름을 사용해야 한다.
+  - 즉, 아래의 코드와 같이 사용해야 한다.
+
+```js
+const boxVariants = {
+  start: {
+    opacity: 0,
+    scale: 0.5,
+  },
+  end: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      type: "spring",
+      duration: 0.5,
+      bounce: 0.5,
+    },
+  },
+};
+const circleVariansts = {
+  start: {
+    scale: 0,
+  },
+  end: {
+    scale: 2,
+    transition: {
+      type: "spring",
+      bounce: 0.8,
+      duration: 5,
+    },
+  },
+};
+function App() {
+  return (
+    <Wrapper>
+      <Box variants={boxVariants} initial="start" animate="end">
+        <Circle variants={circleVariansts} />
+        <Circle variants={circleVariansts} />
+        <Circle variants={circleVariansts} />
+        <Circle variants={circleVariansts} />
+      </Box>
+    </Wrapper>
+  );
+}
+```
+
+## Orchestration
+
+- Orchestration의 delayChildren을 이용하여 자식요소들에게 delay시간을 지정할 수 있다.
+
+- Orchestration의 staggerChildren은 각각의 자식요소에 delay를 줄 수 있다.
+
+```js
+const boxVariants = {
+  start: {
+    opacity: 0,
+    scale: 0.5,
+  },
+  end: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      type: "spring",
+      duration: 0.5,
+      bounce: 0.5,
+      delayChildren: 0.5, // 모든 자식요소에 0.5초의 delay를 부여
+      staggerChildren: 0.5, // 자식요소 마다 0.5의 추가 딜레이를 부여
+      //즉, 첫 번째 Circle은 1초의 딜레이, 두 번째 Circle은 1.5초의 딜레이, 세 번째 Circle은 2초의 delay, 네 번째 Circle은 2.5초의 delay를 갖는다.
+    },
+  },
+};
+const circleVariansts = {
+  start: {
+    opacity: 0,
+  },
+  end: {
+    opacity: 1,
+    transition: {},
+  },
+};
+function App() {
+  return (
+    <Wrapper>
+      <Box variants={boxVariants} initial="start" animate="end">
+        <Circle variants={circleVariansts} />
+        <Circle variants={circleVariansts} />
+        <Circle variants={circleVariansts} />
+        <Circle variants={circleVariansts} />
+      </Box>
     </Wrapper>
   );
 }
