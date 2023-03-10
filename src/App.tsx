@@ -15,14 +15,17 @@ const Box = styled(motion.div)`
   border-radius: 15px;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.06);
 `;
+const myVars = {
+  start: { scale: 0 }, // 초기 상태
+  // Box component의 initial 속성을 가져왔다.
+  end: { scale: 1, rotateZ: 360, transition: { duration: 3 } }, // 최종 상태
+  // Box component의 animation 속성을 가져왔다.
+  // 최종 상태에서 transition 속성을 지정할 수 있다.
+};
 function App() {
   return (
     <Wrapper>
-      <Box
-        initial={{ scale: 0 }}
-        animate={{ scale: 1, rotateZ: 360 }}
-        transition={{ duration: 3 }}
-      />
+      <Box variants={myVars} initial="start" animate="end" />
     </Wrapper>
   );
 }

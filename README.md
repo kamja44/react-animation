@@ -78,3 +78,28 @@ const Box = styled(motion.div)``;
 - 요소의 크기를 재정의한다.
 - initial={{scale : 0}}
   - 요소의 초기상태의 크기는 0이다.
+
+# variants
+
+- 애니메이션의 stage
+  - ex) initial, finish, showing, hidden, from to, 0% 100% 등
+  - 즉, 초기상태와 최종상태를 지정한다.
+
+Variants 사용법
+
+```js
+// variant 정의
+const myVars = {
+  start: { scale: 0 }, // 초기 상태
+  end: { scale: 1, rotateZ: 360, transition: { duration: 3 } }, // 최종 상태, 최종 상태에서 transition 속성을 지정할 수 있다.
+};
+function App() {
+  return (
+    <Wrapper>
+      // variaent 적용
+      <Box variants={myVars} initial="start" animation="end" />
+      // myVars의 start는 initial에 end는 animation에 기술한다.
+    </Wrapper>
+  );
+}
+```
