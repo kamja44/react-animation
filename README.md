@@ -205,3 +205,21 @@ function App() {
   );
 }
 ```
+
+# while
+
+## whileHover
+
+- component에 mousehover 이벤트 발생 시 동작하는 이벤트이다.
+
+```js
+<Box whileHover={{ scale: 2 }} />
+```
+
+## whileTap
+
+- component 클릭 시(계속 클릭) 이벤트가 발생한다.
+
+```js
+<Box whileTap={{borderRadius: "100px"}}>
+```
