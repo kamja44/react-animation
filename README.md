@@ -223,3 +223,19 @@ function App() {
 ```js
 <Box whileTap={{borderRadius: "100px"}}>
 ```
+
+# drag
+
+- component를 드래그할 수 있다.
+
+```js
+<Box drag />
+```
+
+## whileDrag
+
+- component를 드래그하는 동안 Element를 변경시킬 수 있다.
+
+```js
+<Box drag whileDrag={{ backgroundColor: "rgb(46, 204, 113)" }} />
+```
