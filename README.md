@@ -289,3 +289,30 @@ const biggerBoxRef = useRef < HTMLDivElement > null;
 - 외부 제약 조건에서 허용되는 이동 정도이다.
 - 0 = 움직임 x, 1 = 전체 움직임
 - 기본값은 0.5이다.
+
+# useMotionValue
+
+- component의 값을 추적할 수 있다.
+
+```js
+const x = useMotionValue(0);
+console.log(x);
+return (
+  <Wrapper>
+    <Box style={{ x: x }} drag="x" dragSnapToOrigin />
+  </Wrapper>
+);
+```
+
+- style의 x좌표가 바뀔 때 마다 MotionValue가 업데이트된다.
+- motionValue가 업데이트될 때 React Rendering Cycle을 발생시키지 않는다.
+
+## set
+
+- set 메서드로 업데이트할 수 있다.
+- React 리렌더리을 트리거하지 않는다.
+
+## get
+
+- MotionValue는 문자열이나 숫자가 될 수 있다.
+- get 메소드를 사용하여 값을 읽을 수 있다.
