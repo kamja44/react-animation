@@ -239,3 +239,53 @@ function App() {
 ```js
 <Box drag whileDrag={{ backgroundColor: "rgb(46, 204, 113)" }} />
 ```
+
+# constraint
+
+- component들을 제약한다.
+
+```js
+<Box drag="x">
+```
+
+- x축으로의 drag만 허용한다.
+
+## dragConstraints
+
+- 드래그의 제약조건을 설정한다.
+
+```js
+<Box dragConstraints={{ top: -50, bottom: 50, left: -50, right: 50 }} />
+```
+
+# ref
+
+- 코드를 사용해서 특정 Element를 잡을 수 있는 방법
+
+```js
+const biggerBoxRef = useRef < HTMLDivElement > null;
+<BiggerBox ref={biggerBoxRef}>
+  <Box
+    drag
+    dragConstraints={biggerBoxRef}
+    whileDrag="drag"
+    variants={boxVariants}
+    whileHover="hover"
+    whileTap="click"
+  />
+</BiggerBox>;
+```
+
+- ref를 이용하여 레퍼런스를 만들고, BiggerBox에 넣어준다.
+- Box에 biggerBox의 가장자리까지 constraints를 넣어준다.
+
+## dragSnapToOrigin
+
+- 기본값 = true
+- true인 경우 드래그 가능한 요소는 드래그를 해제할 때, 원점으로 다시 애니메이션된다(원점으로 돌아간다).
+
+## dragElastic
+
+- 외부 제약 조건에서 허용되는 이동 정도이다.
+- 0 = 움직임 x, 1 = 전체 움직임
+- 기본값은 0.5이다.
