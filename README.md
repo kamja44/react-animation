@@ -307,6 +307,10 @@ return (
 - style의 x좌표가 바뀔 때 마다 MotionValue가 업데이트된다.
 - motionValue가 업데이트될 때 React Rendering Cycle을 발생시키지 않는다.
 
+### MotionValue
+
+- state가 아니며, 재랜더링을 발동하지 않는다.
+
 ## set
 
 - set 메서드로 업데이트할 수 있다.
@@ -341,3 +345,7 @@ const potato = useTransform(x, [-800, 0, 800], [2, 1, 0.1]);
 입력값들은 출력값들과 갯수가 같아야 한다.
 
 - 즉, input과 output은 반드시 같은 배열 크기를 가져야 한다.
+
+# useScroll
+
+- 스크롤의 MotionValue를 넘겨준다.
