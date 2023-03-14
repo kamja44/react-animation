@@ -316,3 +316,28 @@ return (
 
 - MotionValue는 문자열이나 숫자가 될 수 있다.
 - get 메소드를 사용하여 값을 읽을 수 있다.
+
+# useTransform
+
+- useTransform 훅을 사용해서 MotionValues를 연결한다.
+- useTransform()는 한 값의 범위에서 다른 값의 범위로 매핑하여 다른 MotionValue의 output을 변환하는 MotionValue를 만든다.
+
+```js
+const potato = useTransform(x, [-800, 0, 800], [2, 1, 0.1]);
+```
+
+첫 번째 argument
+
+- listening할 component
+
+두 번째 argument
+
+- 검토하길 원하는 입력값들
+
+세 번째 argument
+
+- 얻길 원하는 출력값들
+
+입력값들은 출력값들과 갯수가 같아야 한다.
+
+- 즉, input과 output은 반드시 같은 배열 크기를 가져야 한다.
