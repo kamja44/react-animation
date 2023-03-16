@@ -629,3 +629,26 @@ function App() {
 
 export default App;
 ```
+
+# layout
+
+- layout prop을 element에 할당하면 element의 layout이 변경될 때 자동으로 animate된다.
+
+```js
+function App() {
+  const [clicked, setClicked] = useState(false);
+  const toggleClicked = () => setClicked((prev) => !prev);
+  return (
+    <Wrapper onClick={toggleClicked}>
+      <Box
+        style={{
+          justifyContent: clicked ? "center" : "flex-start",
+          alignItems: clicked ? "center" : "flex-start",
+        }}
+      >
+        <Circle layout />
+      </Box>
+    </Wrapper>
+  );
+}
+```
