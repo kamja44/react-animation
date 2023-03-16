@@ -652,3 +652,21 @@ function App() {
   );
 }
 ```
+
+# layoutId
+
+- Framer에게 layoutId가 같으면 동일한 component라고 말해준다.
+  - 즉, 서로 다른 component를 동일한 component로 만들 수 있다.
+
+```js
+<Wrapper onClick={toggleClicked}>
+  <Box>
+    {!clicked ? (
+      <Circle layoutId="circle" style={{ borderRadius: 50 }} />
+    ) : null}
+  </Box>
+  <Box>
+    {clicked ? <Circle layoutId="circle" style={{ scale: 2 }} /> : null}
+  </Box>
+</Wrapper>
+```
