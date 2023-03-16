@@ -429,3 +429,25 @@ function App() {
 - 모든 property의 default duration을 5로 설정한다.
   - 즉, 모든 property의 duration은 5이다.
 - fill property는 duration을 2로, delay를 5로 설정한다.
+
+# AnimatePresence
+
+- React js App 에서 사라지는 component를 animate한다.
+- ex) box가 사라질 때의 animation을 적용한다.
+- AnimatePresence의 내부에는 조건문이 있어야 하며, component가 visible 상태여야 한다.
+
+```js
+<AnimatePresence>
+  {showing ? (
+    <Box
+      variants={boxVariants}
+      initial="initial"
+      animate="visible"
+      exit="leaving"
+    />
+  ) : null}
+</AnimatePresence>
+```
+
+- Box의 exit props
+  - Box element가 사라질 때 exit에서 설정한 animation을 발생시킨다.
